@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Harry Potter IMAX Fan Edit Collection - TRUE MAX Experience</title>
+
+<style>
+  /* Harry Potter style font embutida (Harry P, base64 WOFF) */
+  @font-face {
+    font-family: 'HarryP';
+    src: url(data:font/woff;base64,d09GRgABAAAAACpQABIAAAABlkgAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAABWAAAABwAAAAYABwAER1BPUwAAAYAAAABcAAAAYHxmu9lHU1VCAAAGYAAAAVYAAAGLc+G50R1NVQgAAhQAAAFgAAAB4dQv+9mRPUy8yAAACkAAAAVAAAAgCQG7oJY21hcAAArwAAABwAAAAgAFMAElnZ2x5ZgAAsbAAAA3IAAAYAgBd8j2hlYWQAAHBAAAAANgAAADYBpNkjaGhlYQAAe5AAAAg4AAAIEJ71Kx2htdHgAAHhAAABtAAAAXwF1LAAgbG9jYQAAgOQAAAB8AAAAfDQSBIObWF4cAAAgTAAAAGuAAABxAnVT0m5uYW1lAAApdAAAAGwAAABaGDDpMHBvc3QAAHKwAAABDAAAAYADpgONcHJlcAAAjLAAAAS2AAADuZqxuQAAEAAAAABeAAC3LoDHxWAAAACAACAAAAAAAAAAEAAQAAAAAAAAAAAAAAAAAAAAAAAD//wAAACQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAPwAAACIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAAFYAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALUAAQAA/wAA//8AAP//AAAAAQAAAAAAZGF0YQAQAAA=) format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  body {
+    margin: 0;
+    background: #0b0c10 url('https://www.transparenttextures.com/patterns/dark-mosaic.png') repeat;
+    color: #f0e6d2;
+    font-family: 'Open Sans', sans-serif;
+  }
+  header {
+    position: relative;
+    background: url('https://i.imgur.com/wXEnSUF.jpeg') center center/cover no-repeat;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #c9a36a;
+    text-shadow: 2px 2px 14px #000;
+  }
+  header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(11,12,16,0.8);
+    z-index: 0;
+  }
+  /* Frase FAN EDIT HUB maior e com fonte Harry Potter */
+  header h1 {
+    font-family: 'HarryP', cursive;
+    font-size: 7rem;
+    letter-spacing: 0.15em;
+    margin: 0;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+    user-select: none;
+    line-height: 1;
+  }
+  header p {
+    position: relative;
+    margin-top: 0.8rem;
+    font-size: 1.8rem;
+    color: #e1d2a3;
+    z-index: 1;
+    font-style: italic;
+    user-select: none;
+  }
+
+  main {
+    max-width: 1200px;
+    margin: 3rem auto 5rem;
+    padding: 0 1rem;
+  }
+  section {
+    margin-bottom: 3.5rem;
+  }
+  .did-you-know {
+    background: #1f2833cc;
+    padding: 2rem 1rem;
+    border-radius: 14px;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #f5c25c;
+    font-weight: 700;
+    box-shadow: 0 0 20px #f5c25cbb;
+    backdrop-filter: blur(6px);
+    user-select: none;
+  }
+  /* Capas empilhadas, grandes e sem legenda */
+  .covers {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+  }
+  .cover-item {
+    max-width: 600px;
+    width: 90vw;
+    box-shadow: 0 0 30px #6e5314cc;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #232931dd;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .cover-item:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 45px #c9a36acc;
+  }
+  .cover-item img {
+    width: 100%;
+    display: block;
+  }
+
+  .carousel {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 14px;
+    box-shadow: 0 0 35px #c9a36aaa;
+    background: #1f2833cc;
+    backdrop-filter: blur(6px);
+  }
+  .carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  .carousel-slide {
+    min-width: 100%;
+    user-select: none;
+  }
+  .carousel-slide img {
+    width: 100%;
+    display: block;
+  }
+  .carousel-caption {
+    text-align: center;
+    color: #e1d2a3;
+    font-weight: 700;
+    font-size: 1.3rem;
+    padding: 1rem 0;
+    text-shadow: 0 0 8px #000;
+  }
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #c9a36aaa;
+    border: none;
+    padding: 0.7rem 1.1rem;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 2rem;
+    color: #0b0c10;
+    font-weight: 900;
+    box-shadow: 0 0 18px #c9a36acc;
+    user-select: none;
+    transition: background-color 0.3s ease;
+    z-index: 10;
+  }
+  .carousel-button:hover {
+    background: #e3bb5d;
+  }
+  .carousel-button.prev {
+    left: 15px;
+  }
+  .carousel-button.next {
+    right: 15px;
+  }
+
+  .comparison {
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto 5rem;
+  }
+  .comparison h2 {
+    font-family: 'HarryP', cursive;
+    color:#c9a36a;
+    margin-bottom: 2rem;
+    font-size: 4rem;
+    text-shadow: 2px 2px 12px #000;
+    user-select: none;
+  }
+  .comparison img.scheme {
+    max-width: 95%;
+    border-radius: 20px;
+    box-shadow: 0 0 45px #c9a36aaa;
+    margin-bottom: 4rem;
+    transition: transform 0.3s ease;
+  }
+  .comparison img.scheme:hover {
+    transform: scale(1.02);
+  }
+  .comparison-flex {
+    display: flex;
+    justify-content: center;
+    gap: 3.5rem;
+    flex-wrap: nowrap;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .comparison-flex > div {
+    flex: 1;
+    min-width: 540px;
+  }
+  .comparison-flex img {
+    width: 100%;
+    border-radius: 18px;
+    box-shadow: 0 0 24px #222;
+    transition: box-shadow 0.3s ease;
+  }
+  .comparison-flex img:hover {
+    box-shadow: 0 0 38px #c9a36acc;
+  }
+  .comparison-flex p {
+    color: #ccc;
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: 0.02em;
+    text-shadow: 1px 1px 5px #0009;
+    user-select: none;
+  }
+  .comparison-flex p.highlight {
+    color: #c9a36a;
+    font-weight: 900;
+    font-size: 1.5rem;
+  }
+  .buy-section {
+    text-align: center;
+    margin: 4rem 0 3rem;
+  }
+  .buy-button {
+    background: #c9a36a;
+    color: #0b0c10;
+    font-weight: 900;
+    font-size: 1.9rem;
+    padding: 1.3rem 5rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 30px #c9a36acc;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+    user-select: none;
+  }
+  .buy-button:hover {
+    background: #e3bb5d;
+    transform: scale(1.08);
+  }
+  footer {
+    background: #1f2833cc;
+    color: #888;
+    text-align: center;
+    padding: 1.2rem 0;
+    font-size: 0.9rem;
+    backdrop-filter: blur(6px);
+    user-select: none;
+  }
+  .disclaimer {
+    max-width: 700px;
+    margin: 2rem auto 0;
+    font-size: 1rem;
+    color: #bbb;
+    line-height: 1.7;
+    text-align: center;
+    font-style: italic;
+    user-select: none;
+  }
+
+  @media (max-width: 1320px) {
+    .comparison-flex {
+      flex-wrap: wrap;
+    }
+    .comparison-flex > div {
+      min-width: 90vw;
+      margin-bottom: 3rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header role="banner" aria-label="FAN EDIT HUB Presents">
+  <h1>FAN EDIT HUB Presents</h1>
+  <p>TRUE MAX - Harry Potter IMAX Fan Edit Collection</p>
+</header>
+<main>
+  <section class="did-you-know" aria-label="Key features">
+    Experience the ultimate Harry Potter fan edit with TRUE MAX:  
+    • 7.1 DTS HD Master Audio  
+    • Enhanced video quality beyond official releases  
+    • More image, less black bars — immersive widescreen aspect  
+    • Vibrant new HDR colors never seen before  
+    • Restored, deleted, and extended scenes for maximum runtime
+  </section>
+
+  <section class="covers" aria-label="Harry Potter IMAX Fan Edit covers">
+    <img src="https://i.imgur.com/wXEnSUF.jpeg" alt="Harry Potter TRUE MAX cover 1" class="cover-item" />
+    <img src="https://i.imgur.com/HocodAV.jpeg" alt="Harry Potter TRUE MAX cover 2" class="cover-item" />
+    <img src="https://i.imgur.com/wF4otzv.jpeg" alt="Harry Potter TRUE MAX cover 3" class="cover-item" />
+    <img src="https://i.imgur.com/Sk0Yg79.jpeg" alt="Harry Potter TRUE MAX cover 4" class="cover-item" />
+  </section>
+
+  <section class="carousel" aria-label="Highlight features carousel">
+    <button class="carousel-button prev" aria-label="Previous Slide">&#10094;</button>
+    <div class="carousel-track">
+      <div class="carousel-slide">
+        <img src="https://i.imgur.com/g1q6oIj.jpeg" alt="7.1 DTS HD Master Audio quality" />
+        <p class="carousel-caption">7.1 DTS HD Master Audio Quality</p>
+      </div>
+      <div class="carousel-slide">
+        <img src="https://i.imgur.com/BYoVpMi.jpeg" alt="Video quality beyond official versions" />
+        <p class="carousel-caption">Video Quality Beyond Official Releases</p>
+      </div>
+      <div class="carousel-slide">
+        <img src="https://i.imgur.com/gRx2Xzj.png" alt="More image, less black bars, immersive widescreen aspect" />
+        <p class="carousel-caption">More Image, Less Black Bars - Immersive Aspect</p>
+      </div>
+      <div class="carousel-slide">
+        <img src="https://i.imgur.com/SlXup4K.png" alt="Vibrant new HDR colors" />
+        <p class="carousel-caption">Vibrant New HDR Colors Never Seen Before</p>
+      </div>
+      <div class="carousel-slide">
+        <img src="https://i.imgur.com/03YfPHl.jpeg" alt="Restored, deleted, and extended scenes for max runtime" />
+        <p class="carousel-caption">Restored, Deleted & Extended Scenes for Max Runtime</p>
+      </div>
+    </div>
+    <button class="carousel-button next" aria-label="Next Slide">&#10095;</button>
+  </section>
+
+  <section class="comparison" aria-label="Comparison of Open Matte and TrueMax">
+    <h2>TRUE MAX vs. Original Blu-ray Comparison</h2>
+    <img class="scheme" src="https://i.imgur.com/30ZTsXP.jpeg" alt="Open Matte Widescreen vs. TrueMax Comparison Scheme" />
+    <div class="comparison-flex">
+      <div>
+        <img src="https://i.imgur.com/MKTHccq.jpeg" alt="Original Blu-ray version" />
+        <p>Original Blu-ray Version</p>
+      </div>
+      <div>
+        <img src="https://i.imgur.com/Nifpagb.jpeg" alt="TRUE MAX Enhanced version" />
+        <p class="highlight">TRUE MAX Enhanced Version</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="buy-section">
+    <a href="https://gumroad.com/l/yourproductlink" target="_blank" rel="noopener" class="buy-button" aria-label="Buy Now on Gumroad">Buy Now - Instant Download</a>
+  </section>
+
+  <p class="disclaimer">* Digital product: Fan-edited videos for the best visual and audio experience. Available for immediate download after purchase.</p>
+</main>
+
+<footer>
+  &copy; 2025 Fan Edit Hub. All rights reserved.
+</footer>
+
+<script>
+  const track = document.querySelector('.carousel-track');
+  const slides = Array.from(track.children);
+  const prevButton = document.querySelector('.carousel-button.prev');
+  const nextButton = document.querySelector('.carousel-button.next');
+  let currentIndex = 0;
+
+  function updateCarousel() {
+    const slideWidth = slides[0].getBoundingClientRect().width;
+    track.style.transform = 'translateX(-' + slideWidth * currentIndex + 'px)';
+  }
+
+  prevButton.addEventListener('click', () => {
+    currentIndex = (currentIndex === 0) ? slides.length - 1 : currentIndex - 1;
+    updateCarousel();
+  });
+
+  nextButton.addEventListener('click', () => {
+    currentIndex = (currentIndex === slides.length - 1) ? 0 : currentIndex + 1;
+    updateCarousel();
+  });
+
+  setInterval(() => {
+    currentIndex = (currentIndex === slides.length - 1) ? 0 : currentIndex + 1;
+    updateCarousel();
+  }, 6000);
+
+  window.addEventListener('load', updateCarousel);
+  window.addEventListener('resize', updateCarousel);
+</script>
+</body>
+</html>
